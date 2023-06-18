@@ -1,3 +1,4 @@
+package groovy_ch01;
 public class AcessModifier {
   public static void main(String[] args) {
     ClassWithSecret secret = new ClassWithSecret();

@@ -1,3 +1,4 @@
+package groovy_ch01;
 class Person{
   private String name;
   public String getName(){
