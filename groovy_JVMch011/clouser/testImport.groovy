@@ -1,0 +1,1 @@
+def ImportTestmap = ["test1" : "1", "test2" : "test2"]
