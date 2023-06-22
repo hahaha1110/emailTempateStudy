@@ -1,0 +1,251 @@
+<%@ page contentType="text/html; pageEncoding=EUC-KR" %>
+<% 
+	int totCount = junmunMap.get("사용내용").size()
+	String cardNo1 = junmunMap.get("신용카드번호").substring(0,4) 
+ 	String cardNo2 = junmunMap.get("신용카드번호").substring(12,16)
+	String ymdhmss = new Date().format("yyyy-MM-dd HH:mm:ss") 
+%>
+
+<html>
+<head>
+    <title>[156] 카드 국내이용내역조회</title>
+    <link href="http://fax-main.suhyup.co.kr/UMSTemplate/css/UMS.css" rel="stylesheet" />
+</head>
+	<style type="text/css" media="print" >
+		div.page
+		{
+			page-break-after: always;
+			page-break-inside: avoid;
+		}
+	</style>
+<body>
+    <div align="center">
+	<% if(30 < totCount){ %>		
+		<div class="page">
+	<%}%>
+        <table cellpadding="0" cellspacing="0" class="TemplateWidth">
+            <tr>
+                <td class="TextAlignLeft2"><img src="http://fax-main.suhyup.co.kr/UMSTemplate/images/sh_card_logo.gif" class="CardLogoSize"/></td>
+            </tr>
+            <tr>
+                <td class="TextTitle">< 국내이용내역조회 > </td>
+            </tr>
+            <tr>
+                <td>
+                    <table cellpadding="0" cellspacing="0" width="100%" class="TextNomal">
+                        <tr>
+                            <td colspan="3" class="TextNomal">
+                                ▶ 카드정보
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="TextAlignCenter  BorderLeft BorderBottom BorderRight BorderTop Width_20per Height_30px BGColorGray">
+                                고객명
+                            </td>
+                            <td class="TextAlignCenter  BorderBottom BorderRight BorderTop Width_30per Height_30px">
+														<%=junmunMap.get("회원명")%>
+                            </td>
+                            <td style="width:20px;">&nbsp;</td>
+                            <td class="TextAlignCenter  BorderLeft BorderBottom BorderRight BorderTop Width_20per Height_30px BGColorGray">
+                                카드번호
+                            </td>
+                            <td class="TextAlignCenter  BorderBottom BorderRight BorderTop Width_30per Height_30px">
+														<%=cardNo1%>-****-****-<%=cardNo2%>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="BrHeight"></td>
+                        </tr>
+                        <tr>
+                            <td class="TextAlignCenter  BorderLeft BorderBottom BorderRight BorderTop Width_20per Height_30px BGColorGray">
+                                조회기간
+                            </td>
+                            <td class="TextAlignCenter  BorderBottom BorderRight BorderTop Width_30per Height_30px">
+														<% 
+															String startDate = junmunMap.get("조회시작일") 
+															String endDate = junmunMap.get("조회종료일") 
+														%>
+														<%=startDate.substring(0,4)%>-<%=startDate.substring(4,6)%>-<%=startDate.substring(6)%>~<%=endDate.substring(0,4)%>-<%=endDate.substring(4,6)%>-<%=endDate.substring(6)%>
+                            </td>
+                            <td style="width:20px;">&nbsp;</td>
+                            <td class="TextAlignCenter  BorderLeft BorderBottom BorderRight BorderTop Width_20per Height_30px BGColorGray">
+                                총 건수
+                            </td>
+                            <td class="TextAlignCenter  BorderBottom BorderRight BorderTop Width_30per Height_30px">
+														<%=totCount%>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="5">
+                                <table cellpadding="0" cellspacing="0"  class="TextSmallTitle">
+                                    <tr>
+                                        <td class="TextVerticalTop" style="padding-right:5px;">▣</td>
+                                        <td>국내이용내역은 당사로 접수된 확정된 카드이용내역이 제공됩니다.<br />특정 가맹점에 대한 이용내역만 조회를 원하실 경우 가맹점번호 숫자를 확인 후 가맹점 이용내역 조회를 이용하시기 바랍니다.</td>
+                                    </tr>
+																		<tr>
+                                        <td class="TextVerticalTop" style="padding-right:5px;">▣</td>
+                                        <td>카드번호는 고객님의 소지하신 카드번호 16자리 중 마지막 4자리입니다.</td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>
+                    <table cellpadding="0" cellspacing="0" width="100%">
+                        <tr>
+                            <td colspan="3" class="TextNomal Width_50per TextAlignLeft2">
+                                ▶ 국내이용내역
+                            </td>
+                            <td colspan="3" class="TextSmallTitle Width_50per TextAlignRight">
+                                조회기준일시 <%=ymdhmss%>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table cellpadding="0" cellspacing="0" width="100%" class="Border TextSmallTitle TableFixed">
+                        <tr>
+                            <td class="BorderBottomHeader BorderRight BGColorGray TextAlignCenter Height_30px" style="width:30px;">순번</td>
+                            <td class="BorderBottomHeader BorderRight BGColorGray TextAlignCenter Height_30px" style="width:70px;">거래일자</td>
+                            <td class="BorderBottomHeader BorderRight BGColorGray TextAlignCenter Height_30px" style="width:50px;">카드번호</td>
+                            <td class="BorderBottomHeader BorderRight BGColorGray TextAlignCenter Height_30px" style="width:60px;">승인번호</td>
+                            <td class="BorderBottomHeader BorderRight BGColorGray TextAlignCenter Height_30px" style="width:30px;">할부</td>
+                            <td class="BorderBottomHeader BorderRight BGColorGray TextAlignCenter Height_30px" style="width:70px;">거래금액</td>
+                            <td class="BorderBottomHeader BorderRight BGColorGray TextAlignCenter Height_30px" style="width:70px;">결제예정일</td>
+                            <td class="BorderBottomHeader BorderRight BGColorGray TextAlignCenter Height_30px" style="width:80px;">가맹점번호</td>
+                            <td class="BorderBottomHeader BorderRight BGColorGray TextAlignCenter Height_30px WidthFixed" style="width:100px;" >가맹점명</td>
+                            <td class="BorderBottomHeader BGColorGray TextAlignCenter TextAlignCenter Height_30px WidthFixed" style="width:70px;">업종</td>
+                        </tr>
+						<% 
+							int totAmount = 0 
+							int canAmount = 0 
+							int pageRow = 0
+							string transDst = ""
+							string stringNm = "" 
+							java.util.ArrayList useCtntList = junmunMap.get("사용내용")
+							for(int i = 0 ; i < useCtntList.size() ; i++) {
+								java.util.Map useCtntMap = useCtntList[i];
+								pageRow += 1
+
+								if(useCtntMap.get("거래종류") == "현금서비스"){
+									transDst = useCtntMap.get("가맹점명") + "(현금서비스)"
+								}else{
+									transDst = useCtntMap.get("가맹점명")
+								}
+
+								if(9 < transDst.length()){
+									transDst = transDst.substring(0,8)
+								}
+
+								if(useCtntMap.get("업종명").length() < 7){
+									stringNm = useCtntMap.get("업종명")
+								}else{
+									stringNm = useCtntMap.get("업종명").substring(0,6)
+								}
+
+								if(pageRow % 45 == 30){
+									String confrmYmd = useCtntMap.get("승인일자");
+									String cardNumber = useCtntMap.get("카드번호");
+						%>
+									<tr>
+										<td class="BorderBottom BorderRight TextAlignCenter"><%=i %></td>
+										<td class="BorderBottom BorderRight TextAlignCenter"><%=confrmYmd.substring(0,4)%>-<%=confrmYmd.substring(4,6)%>-<%=confrmYmd.substring(6)%></td>
+										<td class="BorderBottom BorderRight TextAlignCenter"><%=cardNumber.substring(12,16)%></td>
+										<td class="BorderBottom BorderRight TextAlignCenter"><%=useCtntMap.get("승인번호")%></td>
+										<td class="BorderBottom BorderRight TextAlignCenter"><% if(useCtntMap.get("할부기간") == "00"){%> &nbsp;<%} else{ %> <%=useCtntMap.get("할부기간")%> <% } %></td>
+										<td class="BorderBottom BorderRight TextAlignCenter MoneyCell"><%=useCtntMap.get("거래금액부호")%> <%=useCtntMap.get("거래금액")%></td>
+										<td class="BorderBottom BorderRight TextAlignCenter">
+											<% if (useCtntMap.get("결제예정일") != ""){ %>
+												<%=useCtntMap.get("결제예정일").substring(0,4)%>-<%=useCtntMap.get("결제예정일").substring(4,6)%>-<%=useCtntMap.get("결제예정일").substring(6)%>
+											<% } %>
+										</td>
+										<td class="BorderBottom BorderRight TextAlignCenter"><%=useCtntMap.get("가맹점번호")%></td>
+										<td class="BorderBottom BorderRight TextAlignCenter WidthFixed"><%=transDst%></td>
+										<td class="BorderBottom TextAlignCenter WidthFixed"><%=stringNm%></td>
+									</tr>
+									<% if (pageRow != totCount) { %>
+										</table>
+										</td>
+										</tr>
+										</table>
+										</div>
+										</div>
+									<% }else if(pageRow % 45 == 31){ %>
+									<div align="center">
+										<% if (pageRow < (totCount-44)){ %>
+											<div class="page">
+										<% } %>
+									<table cellpadding="0" cellspacing="0" class="TemplateWidth">
+										<tr>
+											<td>
+												<table cellpadding="0" cellspacing="0" width="100%" class="Border TextSmallTitle TableFixed">
+												<tr>
+													<td class="BorderBottomHeader BorderRight BGColorGray TextAlignCenter Height_30px" style="width:30px;">순번</td>
+													<td class="BorderBottomHeader BorderRight BGColorGray TextAlignCenter Height_30px" style="width:70px;">거래일자</td>
+													<td class="BorderBottomHeader BorderRight BGColorGray TextAlignCenter Height_30px" style="width:50px;">카드번호</td>
+													<td class="BorderBottomHeader BorderRight BGColorGray TextAlignCenter Height_30px" style="width:60px;">승인번호</td>
+													<td class="BorderBottomHeader BorderRight BGColorGray TextAlignCenter Height_30px" style="width:30px;">할부</td>
+													<td class="BorderBottomHeader BorderRight BGColorGray TextAlignCenter Height_30px" style="width:70px;">거래금액</td>
+													<td class="BorderBottomHeader BorderRight BGColorGray TextAlignCenter Height_30px" style="width:70px;">결제예정일</td>
+													<td class="BorderBottomHeader BorderRight BGColorGray TextAlignCenter Height_30px" style="width:80px;">가맹점번호</td>
+													<td class="BorderBottomHeader BorderRight BGColorGray TextAlignCenter Height_30px WidthFixed" style="width:100px;" >가맹점명</td>
+													<td class="BorderBottomHeader BGColorGray TextAlignCenter TextAlignCenter Height_30px WidthFixed" style="width:70px;">업종</td>
+												</tr>
+												<tr>
+													<td class="BorderBottom BorderRight TextAlignCenter"><%=i+1 %></td>
+													<td class="BorderBottom BorderRight TextAlignCenter"><%=useCtntMap.get("승인일자").substring(0,4)%>-<%=useCtntMap.get("승인일자").substring(4,6)%>-<%=useCtntMap.get("승인일자").substring(6)%></td>
+													<td class="BorderBottom BorderRight TextAlignCenter"><%=useCtntMap.get("카드번호").substring(12,16)%></td>
+													<td class="BorderBottom BorderRight TextAlignCenter"><%=useCtntMap.get("승인번호")%></td>
+													<td class="BorderBottom BorderRight TextAlignCenter"><% if(useCtntMap.get("할부기간") == "00"){%> &nbsp;<%} else{ %><%=useCtntMap.get("할부기간")%><%} %></td>
+													<td class="BorderBottom BorderRight TextAlignCenter MoneyCell"><%=useCtntMap.get("거래금액부호")%> <%=useCtntMap.get("거래금액")%></td>
+													<td class="BorderBottom BorderRight TextAlignCenter">
+														<% if (useCtntMap.get("결제예정일") != ""){ %>
+															<%=useCtntMap.get("결제예정일").substring(0,4)%>-<%=useCtntMap.get("결제예정일").substring(4,6)%>-<%=useCtntMap.get("결제예정일").substring(6)%>
+														<% } %>
+													</td>
+													<td class="BorderBottom BorderRight TextAlignCenter"><%=useCtntMap.get("가맹점번호")%></td>
+													<td class="BorderBottom BorderRight TextAlignCenter WidthFixed"><%=transDst%></td>
+													<td class="BorderBottom TextAlignCenter WidthFixed"><%=stringNm%></td>
+												</tr>
+								<%}else{%>
+									<tr>
+										<td class="BorderBottom BorderRight TextAlignCenter"><%=i+1 %></td>
+										<td class="BorderBottom BorderRight TextAlignCenter"><%=useCtntMap.get("승인일자").substring(0,4)%>-<%=useCtntMap.get("승인일자").substring(4,6)%>-<%=useCtntMap.get("승인일자").substring(6)%></td>
+										<td class="BorderBottom BorderRight TextAlignCenter"><%=useCtntMap.get("카드번호").substring(12,16)%></td>
+										<td class="BorderBottom BorderRight TextAlignCenter"><%=useCtntMap.get("승인번호")%></td>
+										<td class="BorderBottom BorderRight TextAlignCenter"><% if(useCtntMap.get("할부기간") == "00"){%> &nbsp;<%} else{ %><%=useCtntMap.get("할부기간")%><%} %></td>
+										<td class="BorderBottom BorderRight TextAlignCenter MoneyCell"><%=useCtntMap.get("거래금액부호")%> <%=useCtntMap.get("거래금액")%></td>
+										<td class="BorderBottom BorderRight TextAlignCenter">
+											<% if(useCtntMap.get("결제예정일") != ""){%>
+												<%=useCtntMap.get("결제예정일").substring(0,4)%>-<%=useCtntMap.get("결제예정일").substring(4,6)%>-<%=useCtntMap.get("결제예정일").substring(6)%>
+											<%} %>
+										</td>
+										<td class="BorderBottom BorderRight TextAlignCenter"><%=useCtntMap.get("가맹점번호")%></td>
+										<td class="BorderBottom BorderRight TextAlignCenter WidthFixed"><%=transDst%></td>
+										<td class="BorderBottom TextAlignCenter WidthFixed"><%=stringNm%></td>
+									</tr>
+								<%}  %>
+								<% totAmount += useCtntMap.get("거래금액") %>
+								<% canAmount += useCtntMap.get("취소금액") %>
+						<%} %>
+                        <tr>
+                            <td colspan="2" class="TextAlignCenter BorderRight BorderTop" style="font-weight:bold">합계</td>
+                            <td colspan="4" class="TextAlignCenter BorderRight BorderTop" style="font-weight:bold">정상매출 <%=totAmount%></td>
+                            <td colspan="4" class="TextAlignCenter BorderTop" style="font-weight:bold">취소매출 -<%=canAmount%></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
+
