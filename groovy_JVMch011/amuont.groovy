@@ -6,3 +6,5 @@ def df = new DecimalFormat("#,###.0")
 def formatted = df.format(num)
 
 println "formatted: ${formatted}"
+
+// println num?number?string("#,###.0")
