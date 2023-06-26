@@ -13,6 +13,10 @@
 // def ymdhms = Date.parse("yyyyMMddHHmmss", "20230626133901");
 // println ymdhms.format("yyyy-MM-dd HH:mm:ss")
 
-def ymd = Date.parse("yyyyMMdd", "20230626")
-println  Date.parse("yyyyMMdd", "20230626").format("yyyy-MM-dd")
-
+// def ymd = Date.parse("yyyyMMdd", "20230626")
+// println  Date.parse("yyyyMMdd", "20230626").format("yyyy-MM-dd")
+def date = new Date()
+println date.format("yyyyMMdd")
+println date.format("yyyy/MM/dd")
+// println new Date().format("yyyyMMdd")
+// println new Date().format("yyyy/MM/dd")
