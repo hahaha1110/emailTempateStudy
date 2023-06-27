@@ -51,3 +51,15 @@ println "hms ===> ${hms} "
 // 없는 값 가져왔을때 ,,, 어케되는지?
 // println mapTest.get("test8")
 println  Date.parse("yyyyMMddHHmmss", "20230627172501").format("yyyy-MM-dd")
+
+    def accNoSubString(String accNo){
+        def returnAccNo = ""
+        if(0 < accNo.length()){
+            if(accNo.length().substring(11) == ""){
+                returnAccNo = accNo.substring(0,3) +  "-" + accNo.substring(3,5) + "-" + accNo.substring(5,8) + "***"
+            }else{
+                returnAccNo = accNo.substring(0,4) + "-" + accNo.substring(4,8) + "-****"
+            }
+        }
+        return returnAccNo
+    }
