@@ -50,3 +50,4 @@ println "hms ===> ${hms} "
 
 // 없는 값 가져왔을때 ,,, 어케되는지?
 // println mapTest.get("test8")
+println  Date.parse("yyyyMMddHHmmss", "20230627172501").format("yyyy-MM-dd")
