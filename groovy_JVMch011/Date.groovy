@@ -14,4 +14,3 @@
 // def now = LocalDate.parse("2021-01-31");
 // println now
 
-println  Date.parse("yyyymmdd", "20230627172501".substring(0,8)).format("yyyy-MM-dd")
