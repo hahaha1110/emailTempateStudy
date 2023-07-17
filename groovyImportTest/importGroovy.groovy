@@ -1,14 +1,18 @@
 class bankcodes {
   def bankCodes = [
-  "000":"ìˆ˜í˜‘ì€í–‰",
-  "001":"í•œêµ­ì€í–‰"
+  "000":"¼öÇùÀºÇà",
+  "001":"ÇÑ±¹ÀºÇà"
   ]
 
   def bankCodesShort = [
-    "000":"ìˆ˜í˜‘",
-  "001":"í•œêµ­"
+    "000":"¼öÇù",
+  "001":"ÇÑ±¹"
   ]
-
+  
+  def codeBook = [
+    "bankCodes":bankCodes,
+    "bankCodesShort":bankCodesShort,
+  ]
 }
 
 
